@@ -1,6 +1,6 @@
-import { ResourceNotFoundError } from "@/errors/resource-not-found-error";
-import { ShelterRepository } from "@/modules/shelter/repositories/shelter-repository";
-import { ResourceRepository } from "../repositories/resource-repository";
+import { ResourceNotFoundError } from "@/errors/resource-not-found-error"
+import { ShelterRepository } from "@/modules/shelter/repositories/shelter-repository"
+import { ResourceRepository } from "../repositories/resource-repository"
 
 export class UpdateResourceUseCase {
   constructor(private resourceRepository: ResourceRepository, private shelterRepository: ShelterRepository) { }
