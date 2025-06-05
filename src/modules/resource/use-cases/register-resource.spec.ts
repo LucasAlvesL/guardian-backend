@@ -1,3 +1,4 @@
+import { ResourceNotFoundError } from "@/errors/resource-not-found-error"
 import { InMemoryShelterRepository } from "@/modules/shelter/repositories/in-memory/in-memory-shelter-repository"
 import { beforeEach, describe, expect, it } from "vitest"
 import { InMemoryResourceRepository } from "../repositories/in-memory/in-memory-resource-repository"
@@ -31,7 +32,7 @@ describe('Create Resource Service', _ => {
       quantity: 10,
       description: 'Description A',
       shelter_id: 'non-existing-shelter'
-    })).rejects.toThrow('Resource not found')
+    })).rejects.toThrow(ResourceNotFoundError)
   })
 
   it('Should be able to create a resource', async _ => {

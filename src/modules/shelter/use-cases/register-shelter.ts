@@ -1,4 +1,5 @@
 import { ShelterAlreadyExistsError } from "@/errors/shelter-already-exists-error"
+import { ShelterCapacityError } from "@/errors/shelter-capacity-error"
 import { hash } from "bcryptjs"
 import { Shelter } from "generated/prisma"
 import { ShelterRepository } from "../repositories/shelter-repository"
@@ -28,11 +29,11 @@ export class RegisterShelterUseCase {
     }
 
     if (shelterWithSameLocation) {
-      throw new Error('Shelter already exists at this location')
+      throw new ShelterAlreadyExistsError()
     }
 
     if (capacity <= 0) {
-      throw new Error('Capacity must be greater than zero')
+      throw new ShelterCapacityError()
     }
 
     const shelter = await this.shelterRepository.create({
