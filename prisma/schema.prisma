@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Person {
+  id            String   @id @default(uuid())
+  name          String
+  age           Int
+  gender        String
+  cpf           String   @unique
+  phone         String?
+  special_needs Boolean  @default(false)
+  entry_date    DateTime @default(now())
+  created_at    DateTime @default(now())
+
+  shelter_id String
+  shelter    Shelter @relation(fields: [shelter_id], references: [id])
+
+  @@map("tb_persons")
+}
+
+enum ResourceItemCategory {
+  FOOD
+  MEDICATION
+  CLOTHING
+  SHELTER
+  OTHER
+}
+
+model Resource {
+  id          String               @id @default(uuid())
+  name        String
+  category    ResourceItemCategory
+  quantity    Int
+  description String?
+  created_at  DateTime             @default(now())
+
+  shelter_id String
+  shelter    Shelter @relation(fields: [shelter_id], references: [id])
+
+  @@map("tb_resources")
+}
+
+model Shelter {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  password_hash String
+  latitude      Decimal
+  longitude     Decimal
+  capacity      Int
+  created_at    DateTime @default(now())
+
+  Person   Person[]
+  Resource Resource[]
+
+  @@map("tb_shelters")
+}
