@@ -68,7 +68,7 @@ Guardian Backend is a Node.js-based application designed to manage shelters, res
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/LucasAlvesL/guardian-backend.git
    cd guardian-backend
    ```
 2. Install dependencies:
