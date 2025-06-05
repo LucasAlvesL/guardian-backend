@@ -1,7 +1,7 @@
-import fastifyJwt from "@fastify/jwt";
-import fastify from "fastify";
-import { env } from "./env";
-import { sheltersRoutes } from "./infra/controllers/shelter/routes";
+import fastifyJwt from "@fastify/jwt"
+import fastify from "fastify"
+import { env } from "./env"
+import { sheltersRoutes } from "./infra/controllers/shelter/routes"
 
 export const app = fastify()
 

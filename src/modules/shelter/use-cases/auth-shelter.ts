@@ -1,7 +1,7 @@
-import { InvalidCredentialsError } from "@/errors/invalid-credentials-error";
-import { compare } from "bcryptjs";
-import { Shelter } from "generated/prisma";
-import { ShelterRepository } from "../repositories/shelter-repository";
+import { InvalidCredentialsError } from "@/errors/invalid-credentials-error"
+import { compare } from "bcryptjs"
+import { Shelter } from "generated/prisma"
+import { ShelterRepository } from "../repositories/shelter-repository"
 
 interface AuthShelterUseCaseRequest {
   email: string

@@ -1,7 +1,7 @@
-import { InvalidCredentialsError } from "@/errors/invalid-credentials-error";
-import { makeAuthShelterUseCase } from "@/modules/shelter/factories/make-auth-shelter-use-case";
-import { FastifyReply, FastifyRequest } from "fastify";
-import { z } from "zod";
+import { InvalidCredentialsError } from "@/errors/invalid-credentials-error"
+import { makeAuthShelterUseCase } from "@/modules/shelter/factories/make-auth-shelter-use-case"
+import { FastifyReply, FastifyRequest } from "fastify"
+import { z } from "zod"
 
 export async function authenticate(req: FastifyRequest, res: FastifyReply) {
   const registerBodySchema = z.object({

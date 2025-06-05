@@ -1,9 +1,9 @@
-import { prisma } from "@/lib/prisma";
-import { Prisma } from "generated/prisma";
-import { ResourceRepository } from "../resource-repository";
+import { prisma } from "@/lib/prisma"
+import { Prisma } from "generated/prisma"
+import { ResourceRepository } from "../resource-repository"
 
 export class PrismaResourceRepository implements ResourceRepository {
-  async create(data: Prisma.ResourceCreateInput) {
+  async create(data: Prisma.ResourceUncheckedCreateInput) {
     return prisma.resource.create({
       data
     })
