@@ -24,9 +24,10 @@ model Person {
   special_needs Boolean  @default(false)
   entry_date    DateTime @default(now())
   created_at    DateTime @default(now())
+  updated_at    DateTime @default(now()) @updatedAt
 
-  shelter_id String
   shelter    Shelter @relation(fields: [shelter_id], references: [id])
+  shelter_id String
 
   @@map("tb_persons")
 }
@@ -46,9 +47,10 @@ model Resource {
   quantity    Int
   description String?
   created_at  DateTime             @default(now())
+  updated_at  DateTime             @default(now()) @updatedAt
 
-  shelter_id String
   shelter    Shelter @relation(fields: [shelter_id], references: [id])
+  shelter_id String
 
   @@map("tb_resources")
 }
