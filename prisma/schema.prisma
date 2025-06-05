@@ -58,8 +58,8 @@ model Shelter {
   name          String
   email         String   @unique
   password_hash String
-  latitude      Decimal
-  longitude     Decimal
+  latitude      Decimal  @unique
+  longitude     Decimal  @unique
   capacity      Int
   created_at    DateTime @default(now())
 
