@@ -7,7 +7,7 @@ export class InMemoryResourceRepository implements ResourceRepository {
 
   async create(data: Prisma.ResourceUncheckedCreateInput) {
     const resource: Resource = {
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
       name: data.name,
       category: data.category,
       quantity: data.quantity,
@@ -23,6 +23,7 @@ export class InMemoryResourceRepository implements ResourceRepository {
   async findById(id: string) {
     return this.resources.find(resource => resource.id === id) || null
   }
+
   async update(id: string, data: Prisma.ResourceUncheckedUpdateInput) {
     const resourceIndex = this.resources.findIndex(resource => resource.id === id)
     if (resourceIndex === -1) return null
