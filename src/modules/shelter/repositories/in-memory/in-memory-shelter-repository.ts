@@ -25,5 +25,7 @@ export class InMemoryShelterRepository implements ShelterRepository {
     this.items.push(shelter)
     return shelter
   }
-
+  async findByLatitudeAndLongitude(latitude: number, longitude: number) {
+    return this.items.find(item => item.latitude.equals(latitude) && item.longitude.equals(longitude)) || null
+  }
 }

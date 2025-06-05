@@ -21,9 +21,14 @@ export class RegisterShelterUseCase {
   async execute({ name, email, password, latitude, longitude, capacity }: RegisterShelterRequest): Promise<RegisterShelterResponse> {
     const password_hash = await hash(password, 6)
     const shelterAlreadyExists = await this.shelterRepository.findByEmail(email)
+    const shelterWithSameLocation = await this.shelterRepository.findByLatitudeAndLongitude(latitude, longitude)
 
     if (shelterAlreadyExists) {
       throw new UserAlreadyExistsError()
+    }
+
+    if (shelterWithSameLocation) {
+      throw new Error('Shelter already exists at this location')
     }
 
     const shelter = await this.shelterRepository.create({

@@ -62,4 +62,24 @@ describe('Register Use Case', _ => {
 
     expect(shelter.id).toEqual(expect.any(String))
   })
+
+  it('Should not allow duplicate latitude and longitude', async _ => {
+    await sut.execute({
+      name: 'Shelter 1',
+      latitude: 1.234,
+      longitude: 5.678,
+      capacity: 1000,
+      email: 'shelter1@example.com',
+      password: '123456'
+    })
+
+    await expect(() => sut.execute({
+      name: 'Shelter 2',
+      latitude: 1.234,
+      longitude: 5.678,
+      capacity: 500,
+      email: 'shelter2@example.com',
+      password: '654321'
+    })).rejects.toThrowError('Shelter already exists at this location')
+  })
 })

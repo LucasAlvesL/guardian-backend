@@ -18,4 +18,12 @@ export class PrismaShelterRepository implements ShelterRepository {
       data
     })
   }
+  findByLatitudeAndLongitude(latitude: number, longitude: number) {
+    return prisma.shelter.findFirst({
+      where: {
+        latitude,
+        longitude
+      }
+    })
+  }
 }
