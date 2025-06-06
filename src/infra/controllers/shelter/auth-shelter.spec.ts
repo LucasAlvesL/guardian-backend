@@ -32,6 +32,7 @@ describe('Authenticate (E2E)', () => {
     expect(res.body).toEqual(
       expect.objectContaining({
         token: expect.any(String),
+        expiresIn: '2h',
       }),
     )
   })
