@@ -1,7 +1,7 @@
-import { ResourceAlreadyExistsError } from "@/errors/resource-already-exists-error";
-import { makeRegisterResourceUseCase } from "@/modules/resource/factories/make-register-resource-use-case";
-import { FastifyReply, FastifyRequest } from "fastify";
-import { z } from "zod";
+import { ResourceAlreadyExistsError } from "@/errors/resource-already-exists-error"
+import { makeRegisterResourceUseCase } from "@/modules/resource/factories/make-register-resource-use-case"
+import { FastifyReply, FastifyRequest } from "fastify"
+import { z } from "zod"
 
 interface UserPayload {
   sign: {
@@ -25,7 +25,7 @@ export async function register(req: FastifyRequest, res: FastifyReply) {
     const user = req.user as UserPayload
     const shelter_id = user?.sign?.sub
     if (!shelter_id) {
-      return res.status(400).send({ message: 'Shelter ID not found in token' });
+      return res.status(400).send({ message: 'Shelter ID not found in token' })
     }
     await resourceUseCase.execute({
       name,

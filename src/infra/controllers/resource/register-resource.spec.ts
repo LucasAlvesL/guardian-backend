@@ -1,7 +1,7 @@
-import { app } from "@/app";
-import { createJWT } from "@/utils/create-and-authenticate-shelter";
-import request from "supertest";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { app } from "@/app"
+import { createJWT } from "@/utils/create-and-authenticate-shelter"
+import request from "supertest"
+import { afterAll, beforeAll, describe, expect, it } from "vitest"
 
 describe("Register Resource Controller (E2E)", () => {
   let token: string
