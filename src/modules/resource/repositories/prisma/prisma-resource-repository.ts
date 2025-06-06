@@ -27,13 +27,4 @@ export class PrismaResourceRepository implements ResourceRepository {
       where: { id }
     })
   }
-
-  async findByNameAndShelterId(name: string, shelter_id: string) {
-    return prisma.resource.findFirst({
-      where: {
-        name,
-        shelter_id
-      }
-    })
-  }
 }
