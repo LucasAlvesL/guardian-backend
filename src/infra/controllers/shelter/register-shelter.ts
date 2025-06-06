@@ -1,5 +1,5 @@
 import { ShelterAlreadyExistsError } from "@/errors/shelter-already-exists-error"
-import { makeRegisterService } from "@/modules/shelter/factories/make-register-use-case"
+import { makeRegisterShelterUseCase } from "@/modules/shelter/factories/make-register-shelter-use-case"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
@@ -20,7 +20,7 @@ export async function register(req: FastifyRequest, res: FastifyReply) {
   const { name, latitude, longitude, capacity, email, password } = registerBodySchema.parse(req.body)
 
   try {
-    const shelterUseCase = makeRegisterService()
+    const shelterUseCase = makeRegisterShelterUseCase()
 
     await shelterUseCase.execute({
       name,

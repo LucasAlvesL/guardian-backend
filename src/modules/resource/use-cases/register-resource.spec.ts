@@ -1,3 +1,4 @@
+import { ResourceAlreadyExistsError } from "@/errors/resource-already-exists-error"
 import { ResourceNotFoundError } from "@/errors/resource-not-found-error"
 import { InMemoryShelterRepository } from "@/modules/shelter/repositories/in-memory/in-memory-shelter-repository"
 import { beforeEach, describe, expect, it } from "vitest"
@@ -45,5 +46,23 @@ describe('Create Resource Service', _ => {
     })
 
     expect(resource.id).toEqual(expect.any(String))
+  })
+
+  it('Should not allow creating a duplicate resource for the same shelter', async () => {
+    await sut.execute({
+      name: 'Resource A',
+      category: 'FOOD',
+      quantity: 10,
+      description: 'Description A',
+      shelter_id: 'shelter-1'
+    })
+
+    await expect(() => sut.execute({
+      name: 'Resource A',
+      category: 'FOOD',
+      quantity: 20,
+      description: 'Duplicate',
+      shelter_id: 'shelter-1'
+    })).rejects.toThrow(ResourceAlreadyExistsError)
   })
 })

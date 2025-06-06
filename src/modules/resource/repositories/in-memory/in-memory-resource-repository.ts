@@ -51,4 +51,12 @@ export class InMemoryResourceRepository implements ResourceRepository {
     const [deletedResource] = this.resources.splice(resourceIndex, 1)
     return deletedResource
   }
+
+  async findByNameAndShelterId(name: string, shelter_id: string) {
+    return (
+      this.resources.find(
+        resource => resource.name === name && resource.shelter_id === shelter_id
+      ) || null
+    )
+  }
 }
