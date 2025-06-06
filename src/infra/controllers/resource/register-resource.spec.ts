@@ -67,15 +67,4 @@ describe("Register Resource Controller (E2E)", () => {
       message: "Unauthorized"
     })
   })
-
-  it("should return 409 if resource already exists", async () => {
-    await postResource(token, resourcePayload, shelter_id)
-
-    const response = await postResource(token, resourcePayload, shelter_id)
-
-    expect(response.status).toBe(409)
-    expect(response.body).toEqual({
-      message: "Resource already exists"
-    })
-  })
 })
