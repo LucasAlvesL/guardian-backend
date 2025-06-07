@@ -1,7 +1,7 @@
 # Guardian Backend
 
 ## Overview
-Guardian Backend is a Node.js-based application designed to manage shelters, resources, and personnel efficiently. It provides robust APIs for authentication, resource registration, and shelter management.
+Guardian Backend is a Node.js-based application designed to manage shelters, resources, and persons. It provides robust APIs for authentication, resource registration, and shelter management.
 
 ## Functional Resources
 - **Authentication**: Secure login and token generation for shelters.
