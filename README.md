@@ -64,6 +64,7 @@ Guardian Backend is a Node.js-based application designed to manage shelters, res
 - Node.js (v16 or higher)
 - Docker
 - PostgreSQL
+- Prisma
 
 ### Installation
 1. Clone the repository:
