@@ -5,8 +5,6 @@ interface UserPayload {
   sign: {
     sub: string
   }
-  iat: number
-  exp: number
 }
 
 export async function profile(req: FastifyRequest, res: FastifyReply) {
