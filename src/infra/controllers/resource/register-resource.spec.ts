@@ -18,7 +18,6 @@ describe("Register Resource Controller (E2E)", () => {
     await app.ready()
     const jwtResponse = await createJWT(app)
     token = jwtResponse.token
-    console.log("JWT Response:", jwtResponse) // debug
 
     const decoded = app.jwt.decode(token) as { sub: string }
     shelter_id = decoded.sub
